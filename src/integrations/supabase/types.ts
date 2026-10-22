@@ -14,7 +14,114 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      chat_messages: {
+        Row: {
+          created_at: string
+          id: string
+          message_id: string
+          parts: Json
+          role: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          message_id: string
+          parts: Json
+          role: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          message_id?: string
+          parts?: Json
+          role?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          department: string | null
+          email_notifications: boolean
+          full_name: string | null
+          id: string
+          job_title: string | null
+          save_chat_history: boolean
+          share_usage_analytics: boolean
+          task_reminders: boolean
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          department?: string | null
+          email_notifications?: boolean
+          full_name?: string | null
+          id: string
+          job_title?: string | null
+          save_chat_history?: boolean
+          share_usage_analytics?: boolean
+          task_reminders?: boolean
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          department?: string | null
+          email_notifications?: boolean
+          full_name?: string | null
+          id?: string
+          job_title?: string | null
+          save_chat_history?: boolean
+          share_usage_analytics?: boolean
+          task_reminders?: boolean
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      tasks: {
+        Row: {
+          assignee: string | null
+          created_at: string
+          description: string | null
+          due_date: string | null
+          id: string
+          priority: string
+          reminder: boolean
+          status: string
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          assignee?: string | null
+          created_at?: string
+          description?: string | null
+          due_date?: string | null
+          id?: string
+          priority?: string
+          reminder?: boolean
+          status?: string
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          assignee?: string | null
+          created_at?: string
+          description?: string | null
+          due_date?: string | null
+          id?: string
+          priority?: string
+          reminder?: boolean
+          status?: string
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
