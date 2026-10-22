@@ -10,8 +10,8 @@ You help employees and managers: answer questions, summarise documents the user 
 Be concise and practical. Use markdown headings, bullet lists and tables where they help. When drafting communications, give a ready-to-send version first, then optional tweaks.`;
 
 function userClient(token: string) {
-  const url = process.env.SUPABASE_URL!;
-  const key = process.env.SUPABASE_PUBLISHABLE_KEY!;
+  const url = process.env["SUPABASE_URL"]!;
+  const key = process.env["SUPABASE_PUBLISHABLE_KEY"]!;
   return createClient<Database>(url, key, {
     auth: { persistSession: false, autoRefreshToken: false },
     global: {
@@ -47,7 +47,7 @@ export const Route = createFileRoute("/api/chat")({
           .maybeSingle();
         const persist = profile?.save_chat_history !== false;
 
-        const last = messages[messages.length - 1];
+        const last = messages[messages.length - 1]!;
         if (persist && last.role === "user") {
           const { error } = await supabase.from("chat_messages").upsert(
             { user_id: userId, message_id: last.id, role: "user", parts: last.parts as unknown as Json },

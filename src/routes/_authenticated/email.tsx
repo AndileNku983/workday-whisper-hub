@@ -35,7 +35,7 @@ function useAssist() {
     setLoading(true);
     setOut(null);
     try {
-      const r = await call({ data: { action, text, tone } });
+      const r = await call({ data: tone ? { action, text, tone } : { action, text } });
       setOut(r.text);
     } catch (e) {
       toast.error(e instanceof Error ? e.message : "AI request failed");
@@ -49,7 +49,7 @@ function useAssist() {
 function EmailPage() {
   const [sorted, setSorted] = useState(false);
   const emails = sorted ? sortEmailsByPriority(DEMO_EMAILS) : DEMO_EMAILS;
-  const [selected, setSelected] = useState<DemoEmail>(DEMO_EMAILS[0]);
+  const [selected, setSelected] = useState<DemoEmail>(DEMO_EMAILS[0]!);
   const inbox = useAssist();
   const triage = useAssist();
 

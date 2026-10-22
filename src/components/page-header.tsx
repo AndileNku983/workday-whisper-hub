@@ -22,7 +22,7 @@ export const PRIORITY_STYLES: Record<string, string> = {
 
 export function PriorityBadge({ value }: { value: string }) {
   return (
-    <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-semibold capitalize ${PRIORITY_STYLES[value] ?? PRIORITY_STYLES.low}`}>
+    <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-semibold capitalize ${PRIORITY_STYLES[value] ?? PRIORITY_STYLES["low"]}`}>
       {value}
     </span>
   );
